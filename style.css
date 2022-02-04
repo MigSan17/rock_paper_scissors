@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+.main {
+    font-family: Orbitron, "sans-serif";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: hsl(215, 28%, 17%);
+    margin: 0;
+    padding: 0;
+}
+
+.heading-container {
+    height: 300px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 30px;
+    padding-bottom: 50px;
+}
+.heading {
+    font-size: 90px;
+    color: #FFFF66;
+}
+
+.scoringContainer {
+    height: 200px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #FF9966;
+}
+
+.scoreTitle {
+    align-self: center;
+    font-size: 40px;
+    padding-bottom: 20px;
+}
+
+.scoreCounter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 100px;
+}
+
+.eachScore {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 200px;
+}
+
+.option {
+    background-color: transparent;
+    border: none;
+}
+
+img {
+    height: 240px;
+    width: auto;
+}
+
+.remark {
+    margin-right: 200px;
+    margin-left: 200px;
+    display: flex;
+    text-align: center;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 40px;
+    padding: 30px;
+    font-size: 60px;
+    color: #FF9966;
+}
+
+.endGameMsg {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    padding: 20px;
+    font-size: 40px;
+    color: #FF9966;
+}
+
+.resetBtn {
+    align-self: center;
+    font-family: Orbitron, "sans-serif";
+    background-color: transparent;
+    border-color: #FF9966;
+    color: #FF9966;
+    width: 40%;
+    padding: 30px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+button {
+    cursor: pointer;
+}

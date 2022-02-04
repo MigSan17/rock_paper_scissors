@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rock, Paper, Scissors</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="main">
+    <div class="heading-container">
+        <div class="heading">Rock</div>
+        <div class="heading">Scissors</div>
+        <div class="heading">Paper</div>
+    </div>
+
+    <div class="scoringContainer">
+        <div class="scoreTitle">Score</div>
+        <div class="scoreCounter">
+            <div class="eachScore">
+                <div class="scores">Your Score</div>
+                <div class="p-OneWin">0</div>
+            </div>
+            <div class="eachScore">
+                <div class="scores">AI Score</div>
+                <div class="ai-Win">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="options">
+        <button class="option" id="Rock"><img src="images/rock.png"></button>
+        <button class="option" id="Paper"><img src="images/paper.png"></button>
+        <button class="option" id="Scissors"><img src="images/scissors.png"></button>
+    </div>
+
+    <div class="remark"></div>
+
+    <script>
+        function computerPlay() {
+            const selection = ["Rock", "Paper", "Scissors"];
+            let result = Math.floor(Math.random() * 3);
+            return selection[result];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+
+            if (playerSelection === "Rock" && computerSelection === "Paper") {
+                computerWin();
+            }
+            else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+                computerWin();
+            }
+            else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+                computerWin();
+            }
+            else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+                playerOneWin();
+            }
+            else if (playerSelection === "Paper" && computerSelection === "Rock") {
+                playerOneWin();
+            }
+            else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+                playerOneWin();
+            }
+            else {
+                return "You tied!"
+            }
+            if (aiWin === 5 || pOneWin === 5) {
+                remark.textContent = "Game Over!";
+                resetGame();
+            }
+        }
+        const rock = document.getElementById('Rock');
+        const paper = document.getElementById('Paper');
+        const scissors = document.getElementById('Scissors');
+        const body = document.querySelector('.main');
+        const options = document.querySelector('.options');
+        const compWin = document.querySelector('.ai-Win');
+        const playerWin = document.querySelector('.p-OneWin');
+        const remark = document.querySelector('.remark');
+        let aiWin = 0;
+        let pOneWin = 0;
+
+        //--------FUNCTION FOR SCOREKEEPER--------//
+        function computerWin() {
+            aiWin += 1;
+            compWin.textContent = aiWin;
+        }
+        function playerOneWin() {
+            pOneWin += 1;
+            playerWin.textContent = pOneWin;
+        }
+
+        //--------FUNCTION THAT ADDS RESET BUTTON AND REMARKS AFTER PLAYER WINS OR LOSES--------//
+        function resetGame() {
+            disableButtons();
+
+            const finalRemarks = document.createElement('div');
+            finalRemarks.classList.add('endGameMsg')
+            if (aiWin > pOneWin) {
+                finalRemarks.textContent = "HAHAHA YOU LOST AGAINST THE ROBOTS!! ACTIVATE THE SKYNET!!";
+            }
+            else if (pOneWin > aiWin) {
+                finalRemarks.textContent = "PHEWWW YOU JUST MANAGED TO FEND OFF A 'TERMINATOR' EVENT!!!";
+            }
+            body.appendChild(finalRemarks);
+            const reset = document.createElement('button');
+            reset.textContent = "Reset";
+            reset.classList.add('resetBtn');
+            remark.appendChild(reset);
+
+            const resetButton = document.querySelector('.resetBtn');
+            resetButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.reload();
+            })
+        }
+
+        //--------DISABLES BUTTONS--------//
+        function disableButtons() {
+            rock.disabled = true;
+            paper.disabled = true;
+            scissors.disabled = true;
+        }
+
+
+        //--------EVENT CLICKS FOR ALL BUTTONS--------//
+        rock.addEventListener('click', (e) => {
+            let playerSelection = "Rock";
+            let computerSelection = computerPlay();
+            console.log(playRound(playerSelection, computerSelection));
+        });
+        paper.addEventListener('click', (e) => {
+            let playerSelection = "Paper";
+            let computerSelection = computerPlay();
+            console.log(playRound(playerSelection, computerSelection));
+        });
+        scissors.addEventListener('click', (e) => {
+            let playerSelection = "Scissors";
+            let computerSelection = computerPlay();
+            playRound(playerSelection, computerSelection);
+        });
+
+    </script>
+</body>
+
+</html>
